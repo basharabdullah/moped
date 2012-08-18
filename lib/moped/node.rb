@@ -210,7 +210,7 @@ module Moped
     def initialize(address)
       @address = address
       puts "Address: #{address}"
-      host, port = address.split(":")
+      host, port = address.is_a? Array ? address[0].split(":") : address.split(":")
       puts "Host: #{host}\t Port: #{port}"
       @ip_address = ::Socket.getaddrinfo(host, nil, ::Socket::AF_INET, ::Socket::SOCK_STREAM).first[3]
       @port = port.to_i
