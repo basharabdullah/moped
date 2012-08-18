@@ -209,9 +209,7 @@ module Moped
     # @since 1.0.0
     def initialize(address)
       @address = address
-      puts "Address: #{@address}"
       host, port = @address.class == Array ? @address[0].split(":") : @address.split(":")
-      puts "Host: #{host}\t Port: #{port}"
       @ip_address = ::Socket.getaddrinfo(host, nil, ::Socket::AF_INET, ::Socket::SOCK_STREAM).first[3]
       @port = port.to_i
       @resolved_address = "#{@ip_address}:#{@port}"
